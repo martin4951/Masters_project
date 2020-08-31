@@ -62,7 +62,7 @@ void t1(void)
 void t2(void)
 {
 
-	if(ConvertedValueP1 <= 2037 && periodT1 <= 2520000)
+	if(ConvertedValueP1 <= 2000 && periodT2 <= 2520000)
 	{
 		SPI_PeripheralControl(SPI2,ENABLE);
 
@@ -74,7 +74,7 @@ void t2(void)
 		SPI_PeripheralControl(SPI2,DISABLE);
 
 	}
-	else if(ConvertedValueP1 > 2037 || periodT1 > 2520000)
+	else if(ConvertedValueP1 > 2000 || periodT2 > 2520000)
 	{
 		SPI_PeripheralControl(SPI1,ENABLE);
 
@@ -89,7 +89,7 @@ void t2(void)
 
 void t3(void)
 {
-	if(ConvertedValueP1 <= 2044 && periodT1 <= 3420000)
+	if(ConvertedValueP1 <= 2000 && periodT3 <= 3420000)
 	{
 		SPI_PeripheralControl(SPI2,ENABLE);
 
@@ -102,7 +102,7 @@ void t3(void)
 		SPI_PeripheralControl(SPI2,DISABLE);
 
 	}
-	else if(ConvertedValueP2 > 2044 || periodT2 > 3420000)
+	else if(ConvertedValueP2 > 2000 || periodT3 > 3420000)
 	{
 
 		SPI_PeripheralControl(SPI1,ENABLE);
@@ -121,7 +121,7 @@ void t3(void)
 
 void t4(void)
 {
-	if(ConvertedValueP2 >= 2071 && periodT2 >= 4600000)
+	if(ConvertedValueP2 >= 2044 && periodT4 >= 4600000)
 	{
 
 		SPI_PeripheralControl(SPI1,ENABLE);
@@ -133,7 +133,7 @@ void t4(void)
 		SPI_PeripheralControl(SPI1,DISABLE);
 
 	}
-	else if(ConvertedValueP2 < 2071 || periodT2 < 4600000)
+	else if(ConvertedValueP2 < 2044 || periodT4 < 4600000)
 	{
 		SPI_PeripheralControl(SPI2,ENABLE);
 
@@ -149,7 +149,7 @@ void t5(void)
 {
 
 
-	if(ConvertedValueP2 >= 2084 && periodT2 >= 5200000 )
+	if(ConvertedValueP2 >= 2044 && periodT5 >= 5200000 )
 		{
 
 			SPI_PeripheralControl(SPI1,ENABLE);
@@ -161,7 +161,7 @@ void t5(void)
 			SPI_PeripheralControl(SPI1,DISABLE);
 
 		}
-		else if(ConvertedValueP2 < 2084 || periodT2 < 5200000 )
+		else if(ConvertedValueP2 < 2044 || periodT5 < 5200000 )
 		{
 			SPI_PeripheralControl(SPI2,ENABLE);
 
@@ -175,7 +175,7 @@ void t5(void)
 
 void t6(void)
 {
-	if(ConvertedValueP3 <= 3031 && periodT3 <= 5900000 )
+	if(ConvertedValueP3 <= 3031 && periodT6 <= 5900000 )
 	{
 
 		SPI_PeripheralControl(SPI3,ENABLE);
@@ -186,7 +186,7 @@ void t6(void)
 
 		SPI_PeripheralControl(SPI3,DISABLE);
 	}
-	else if(ConvertedValueP3 > 3031 || periodT3 > 5900000 )
+	else if(ConvertedValueP3 > 3031 || periodT6 > 5900000 )
 	{
 		SPI_PeripheralControl(SPI3,ENABLE);
 
