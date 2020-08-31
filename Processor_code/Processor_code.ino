@@ -28,9 +28,9 @@ uint8_t sck = 13;
 uint8_t cs = 10;
 uint8_t spimode = 8;
 
-uint16_t buffer;
+char buffer;
 
-int array[7];
+char array[7];
 int interrupt = 0;
 int count = 0;
 int sleepFlag = 0;
