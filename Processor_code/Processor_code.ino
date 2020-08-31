@@ -44,32 +44,25 @@ int size = 22;
 TSPISlave mySPI = TSPISlave(SPI, miso, mosi, sck, cs, spimode);
 
 void setup() {
-  digital.pinMode(11, OUTPUT);
+  digital.pinMode(11, OUTPUT); //Digital pins for master MCU interrupt
   digital.pinMode(12, OUTPUT);
   AudioMemory(16);
   Serial.begin(9600);
   fft1.averageTogether(8);
-  digital.pinMode(10, INPUT_PULLUP, RISING);//pin, mode, type
+  digital.pinMode(10, INPUT_PULLUP, RISING);//interrupt for SS pin of SPI
   Serial.begin(9600);
-  mySPI.onReceive(myFunc); // callback for mySPI
+  mySPI.onReceive(myFunc); // callback for SPI
  
 }
 
 
 
 void loop() {
-  //sleepFlag = 0;
-  Serial.println(millis());
-  delay(1000);
-  for(int k=0; k<6; k++)
-  {
-  Serial.println("Array value:");
-  Serial.println(array[k]);
-  }
+
 
 
  
-  if(array[6] == 0)
+  if(array[3] == 0)
   {
   
   if(buffer == "Task0")
@@ -118,7 +111,7 @@ void loop() {
 
   if(array[0] != 0)
   {
-  if(array[0] == "Task0")
+  if(array[0] == "Task0" || array[1] == "Task0" || array[2] == "Task0")
   {
       digitalWrite(11, HIGH);
 
@@ -135,11 +128,25 @@ void loop() {
 
       digitalWrite(12, LOW);
       
-    Serial.println("Task [0] complete");
-    array[0] = 0;
+    Serial.println("Task 0 complete");
+    
+    for (int i=0; i<3; i++)
+    {
+      if(array[i] == "Task0")
+      {
+      array[i] = 0;
+      }
+     
+    }
+    if(array[0] = 0 && array[1] = 0 && array[2] = 0)
+    {
+      sleepFlag = 1; //If no task active, enable sleep mode
+    }
+    
+    
   }
 
-  if(array[0] == "Task1")
+  if(array[0] == "Task1" || array[1] == "Task1" || array[2] == "Task1")
   {
       digitalWrite(11, HIGH);
 
@@ -153,11 +160,24 @@ void loop() {
     digitalWrite(12, HIGH);
 
     digitalWrite(12, LOW);
-    Serial.println("Task complete");
-    array[0] = 0;
+    Serial.println("Task 1 complete");
+    
+    for (int i=0; i<3; i++)
+    {
+      if(array[i] == "Task1")
+      {
+      array[i] = 0;
+      }
+     
+    }
+    if(array[0] = 0 && array[1] = 0 && array[2] = 0)
+    {
+      sleepFlag = 1;
+    }
+    
   }
 
-  if(array[0] == "Task2")
+  if(array[0] == "Task2" || array[1] == "Task2" || array[2] == "Task2")
   {
       digitalWrite(11, HIGH);
 
@@ -172,11 +192,23 @@ void loop() {
 
      digitalWrite(12, LOW);
       
-    Serial.println("Task [2] complete");
-    array[0] = 0;
+    Serial.println("Task 2 complete");
+    
+    for (int i=0; i<3; i++)
+    {
+      if(array[i] == "Task2")
+      {
+      array[i] = 0;
+      }
+     
+    }
+    if(array[0] = 0 && array[1] = 0 && array[2] = 0)
+    {
+      sleepFlag = 1;
+    }
   }
 
-  if(array[0] == "Task3")
+  if(array[0] == "Task3" || array[1] == "Task3" || array[2] == "Task3")
   {
 
     digitalWrite(11, HIGH);
@@ -192,15 +224,29 @@ void loop() {
 
     digitalWrite(12, LOW);
       
-    Serial.println("Task [3] complete");
-    array[0] = 0;
+    Serial.println("Task 3 complete");
+    
+    for (int i=0; i<3; i++)
+    {
+      if(array[i] == "Task3")
+      {
+      array[i] = 0;
+      }
+     
+    }
+    if(array[0] = 0 && array[1] = 0 && array[2] = 0)
+    {
+      sleepFlag = 1;
+    }
+    
   }
 
-  if(array[0] == "Task4")
+  if(array[0] == "Task4" || array[1] == "Task4" || array[2] == "Task4")
   {
      digitalWrite(11, HIGH);
 
      digitalWrite(11, LOW);
+    
       for (uint16_t i = 0; i < 200; i += 1) 
       {
         int32_t n = fft1.read(i);
@@ -210,11 +256,23 @@ void loop() {
 
     digitalWrite(12, LOW);
       
-    Serial.println("Task [4] complete");
-    array[0] = 0;
+    Serial.println("Task 4 complete");
+    
+    for (int i=0; i<3; i++)
+    {
+      if(array[i] == "Task4")
+      {
+      array[i] = 0;
+      }
+     
+    }
+    if(array[0] = 0 && array[1] = 0 && array[2] = 0)
+    {
+      sleepFlag = 1;
+    }
   }
 
-  if(array[0] == "Task5")
+  if(array[0] == "Task5" || array[1] == "Task5" || array[2] == "Task5")
   {
 
     digitalWrite(11, HIGH);
@@ -230,22 +288,29 @@ void loop() {
 
    digitalWrite(12, LOW);
       
-    Serial.println("Task [5] complete");
-    array[0] = 0;
+    Serial.println("Task 5 complete");
+    
+    for (int i=0; i<3; i++)
+    {
+      if(array[i] == "Task5")
+      {
+      array[i] = 0;
+      }
+     
+    }
+    if(array[0] = 0 && array[1] = 0 && array[2] = 0)
+    {
+      sleepFlag = 1;
+    }
+    
   }
   
   }
-  //Wait for next interrupt
-  if(array[0] == 0)
-  {
-    sleepFlag == 1
-    
-    
-  }
+  
 
   if(sleepFlag == 1)
   {
-    asm("wfi")
+    asm("wfi") //Sleep until next SPI SS interrupt
   }
  
 
@@ -253,14 +318,12 @@ void loop() {
 
 void myFunc() {
  
-  //Serial.println("START: ");
-   
-  //buffer[i] = mySPI.popr();
+  
   while ( mySPI.active() ) {
     if (mySPI.available()) {
 
 
-    buffer = mySPI.popr();
+    buffer = mySPI.popr(); //Receive data from SPI
     
 
    
