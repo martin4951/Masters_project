@@ -17,7 +17,7 @@ typedef struct Task {
 } Task;
 
 
-void scheduler_create(void (*func)(void), unsigned char repeat);
+void scheduler_create(void (*func)(void), int period unsigned char repeat);
 void scheduler_execute(void);
 
 
