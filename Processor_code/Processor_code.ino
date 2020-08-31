@@ -140,7 +140,9 @@ void loop() {
   {
   if(array[0] == "Task0")
   {
-      
+      digitalWrite(10, HIGH);
+
+      digitalWrite(10, LOW);
       
       for (uint16_t i = 0; i < 399; i += 1) 
       {
@@ -148,6 +150,10 @@ void loop() {
         sqrt(i)
 
       }
+
+      digitalWrite(11, HIGH);
+
+      digitalWrite(11, LOW);
       
     Serial.println("Task [0] complete");
     array[0] = 0;
@@ -155,23 +161,36 @@ void loop() {
 
   if(array[0] == "Task1")
   {
+      digitalWrite(10, HIGH);
+
+      digitalWrite(10, LOW);
       
       for (uint16_t i = 0; i < 399; i += 1) 
       {
         sin(i)
       }
-      
+
+    digitalWrite(11, HIGH);
+
+    digitalWrite(11, LOW);
     Serial.println("Task complete");
     array[0] = 0;
   }
 
   if(array[0] == "Task2")
   {
+      digitalWrite(10, HIGH);
+
+      digitalWrite(10, LOW);
       
       for (uint16_t i = 0; i < 399; i += 1) 
       {
         tan(i)
       }
+
+     digitalWrite(11, HIGH);
+
+     digitalWrite(11, LOW);
       
     Serial.println("Task [2] complete");
     array[0] = 0;
@@ -179,11 +198,19 @@ void loop() {
 
   if(array[0] == "Task3")
   {
+
+    digitalWrite(10, HIGH);
+
+    digitalWrite(10, LOW);
       
       for (uint16_t i = 0; i < 399; i += 1) 
       {
         log(i)
       }
+
+    digitalWrite(11, HIGH);
+
+    digitalWrite(11, LOW);
       
     Serial.println("Task [3] complete");
     array[0] = 0;
@@ -191,11 +218,17 @@ void loop() {
 
   if(array[0] == "Task4")
   {
-      
+     digitalWrite(10, HIGH);
+
+     digitalWrite(10, LOW);
       for (uint16_t i = 0; i < 200; i += 1) 
       {
         int32_t n = fft1.read(i);
       }
+
+    digitalWrite(11, HIGH);
+
+    digitalWrite(11, LOW);
       
     Serial.println("Task [4] complete");
     array[0] = 0;
@@ -203,18 +236,26 @@ void loop() {
 
   if(array[0] == "Task5")
   {
+
+    digitalWrite(10, HIGH);
+
+    digitalWrite(10, LOW);
       
       for (uint16_t i = 0; i < 50; i += 1) 
       {
         fib(i)
       }
+
+   digitalWrite(11, HIGH);
+
+   digitalWrite(11, LOW);
       
     Serial.println("Task [5] complete");
     array[0] = 0;
   }
   
   }
-
+  //Wait for next interrupt
   if(array[0] == 0)
   {
     sleepFlag == 1
@@ -238,18 +279,10 @@ void myFunc() {
   while ( mySPI.active() ) {
     if (mySPI.available()) {
 
-    //sleepFlag = 0;
+
     buffer = mySPI.popr();
     
-    
-   
- 
-   
-   
-   
-    //mySPI.pushr(size);
- 
- 
+
    
     }
     }
