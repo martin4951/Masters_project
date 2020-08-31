@@ -138,7 +138,7 @@ void loop() {
       }
      
     }
-    if(array[0] = 0 && array[1] = 0 && array[2] = 0)
+    if(array[0] == 0 && array[1] == 0 && array[2] == 0)
     {
       sleepFlag = 1; //If no task active, enable sleep mode
     }
@@ -170,7 +170,7 @@ void loop() {
       }
      
     }
-    if(array[0] = 0 && array[1] = 0 && array[2] = 0)
+    if(array[0] == 0 && array[1] == 0 && array[2] == 0)
     {
       sleepFlag = 1;
     }
@@ -202,7 +202,7 @@ void loop() {
       }
      
     }
-    if(array[0] = 0 && array[1] = 0 && array[2] = 0)
+    if(array[0] == 0 && array[1] == 0 && array[2] == 0)
     {
       sleepFlag = 1;
     }
@@ -234,7 +234,7 @@ void loop() {
       }
      
     }
-    if(array[0] = 0 && array[1] = 0 && array[2] = 0)
+    if(array[0] == 0 && array[1] == 0 && array[2] == 0)
     {
       sleepFlag = 1;
     }
@@ -266,7 +266,7 @@ void loop() {
       }
      
     }
-    if(array[0] = 0 && array[1] = 0 && array[2] = 0)
+    if(array[0] == 0 && array[1] == 0 && array[2] == 0)
     {
       sleepFlag = 1;
     }
@@ -298,7 +298,7 @@ void loop() {
       }
      
     }
-    if(array[0] = 0 && array[1] = 0 && array[2] = 0)
+    if(array[0] == 0 && array[1] == 0 && array[2] == 0)
     {
       sleepFlag = 1;
     }
