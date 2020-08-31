@@ -9,9 +9,12 @@
 #define TASKS_H_
 
 
-void led_green_blink(void);
-void led_yellow_blink(void);
-void led_red_blink(void);
+void task0(void);
+void task1(void);
+void task2(void);
+void task3(void);
+void task4(void);
+void task5(void);
 
 
 #endif /* TASKS_H_ */
