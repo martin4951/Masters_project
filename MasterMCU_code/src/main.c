@@ -49,6 +49,9 @@ char task5[] = "Task5";
 unsigned long periodT1 = 0;
 unsigned long periodT2 = 0;
 unsigned long periodT3 = 0;
+unsigned long periodT4 = 0;
+unsigned long periodT5 = 0;
+unsigned long periodT6 = 0;
 
 
 unsigned long firstEdgeP1 = 0;
@@ -59,7 +62,9 @@ unsigned long firstEdgeP3 = 0;
 unsigned long secondEdgeP3 = 0;
 
 
-
+int t_counter1 = 0;
+int t_counter2 = 0;
+int t_counter3 = 0;
 
 void delay(void)
 {
@@ -690,6 +695,7 @@ void EXTI0_IRQHandler(void)
 void EXTI1_IRQHandler(void)
 
 {
+	
 	GPIO_IRQHandling(GPIO_PIN_NO_1); //Clear interrupt from EXTI line
 	firstEdgeP1 = ARM_DWT_CYCCNT;  //Start execution cycle timer
 	ConvertedValueP1 = Get_ADC_Converted_ValueP1(); //Sample ADC current value for processor
@@ -703,7 +709,17 @@ void EXTI4_IRQHandler(void)
 {
 	GPIO_IRQHandling(GPIO_PIN_NO_4); 
 	secondEdgeP1 = ARM_DWT_CYCCNT;
-	periodT1 = secondEdgeP1 - firstEdgeP1;
+	t_counter1++
+	if(t_counter1 == 1)
+	{
+		periodT1 = secondEdgeP1 - firstEdgeP1;  //First task
+	}
+	else if(t_counter1 == 2)
+	{
+		periodT2 = secondEdgeP1 - firstEdgeP1;  //Second task
+		t_counter1 = 0;
+	}
+	
 
 }
 
@@ -711,19 +727,29 @@ void EXTI4_IRQHandler(void)
 void EXTI3_IRQHandler(void)
 
 {
+	
 	GPIO_IRQHandling(GPIO_PIN_NO_3); 
 	firstEdgeP2 = ARM_DWT_CYCCNT;
-	ConvertedValueP2 = Get_ADC_Converted_ValueP2();
-
+	ConvertedValueP2 = Get_ADC_Converted_ValueP2(); //Sample ADC current value for processor
 }
 
 //PE2
 void EXTI2_IRQHandler(void)
 
 {
+	
 	GPIO_IRQHandling(GPIO_PIN_NO_2); 
 	secondEdgeP2 = ARM_DWT_CYCCNT;
-	periodT2 = secondEdgeP2 - firstEdgeP2;
+	t_counter2++
+	if(t_counter2 == 1)
+	{
+		periodT3 = secondEdgeP2 - firstEdgeP2;  //First task
+	}
+	else if(t_counter2 == 2)
+	{
+		periodT4 = secondEdgeP2 - firstEdgeP2;  //Second task
+		t_counter2 = 0;
+	}
 
 }
 
@@ -743,6 +769,15 @@ void EXTI15_10_IRQHandler(void)
 {
 	GPIO_IRQHandling(GPIO_PIN_NO_14); 
 	secondEdgeP3 = ARM_DWT_CYCCNT;
-	periodT3 = secondEdgeP3 - firstEdgeP3;
+	t_counter3++
+	if(t_counter3 == 1)
+	{
+		periodT5 = secondEdgeP3 - firstEdgeP3;  //First task
+	}
+	else if(t_counter3 == 2)
+	{
+		periodT6 = secondEdgeP3 - firstEdgeP3;  //Second task
+		t_counter3 = 0;
+	}
 
 }
