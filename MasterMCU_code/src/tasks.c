@@ -15,6 +15,9 @@
 extern unsigned long periodT1;
 extern unsigned long periodT2;
 extern unsigned long periodT3;
+extern unsigned long periodT4;
+extern unsigned long periodT5;
+extern unsigned long periodT6;
 
 
 extern uint16_t ConvertedValueP1;
@@ -25,7 +28,7 @@ extern uint16_t ConvertedValueP3;
 
 void t1(void)
 {
-
+	//If processor in low state for threshold current, AND task execution deadline not missed, stay on the same processor
 	if(ConvertedValueP1 <= 2000 && periodT1 <= 1620000)
 	{
 
@@ -41,6 +44,7 @@ void t1(void)
 		SPI_PeripheralControl(SPI2,DISABLE);
 
 	}
+	//If processor in  high state for threshold current, OR task execution deadline missed, migrate the task to a higher speed processor
 	else if(ConvertedValueP1 > 2000 || periodT1 > 1620000)
 	{
 		SPI_PeripheralControl(SPI1,ENABLE);
