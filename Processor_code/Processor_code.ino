@@ -44,8 +44,8 @@ int size = 22;
 TSPISlave mySPI = TSPISlave(SPI, miso, mosi, sck, cs, spimode);
 
 void setup() {
-  pinMode(10, OUTPUT);
-  pinMode(11, OUTPUT);
+  digital.pinMode(11, OUTPUT);
+  digital.pinMode(12, OUTPUT);
   AudioMemory(16);
   Serial.begin(9600);
   fft1.averageTogether(8);
@@ -66,26 +66,6 @@ void loop() {
   Serial.println("Array value:");
   Serial.println(array[k]);
   }
-
-//  Serial.println("buffer");
-//  Serial.println(buffer);
-
-
-   
-//  Serial.println("array[0]");
-//  Serial.println(array[0]);
-//  Serial.println("array[1]");
-//  Serial.println(array[1]);
-//  Serial.println("array[2]");
-//  Serial.println(array[2]);
-//  Serial.println("array[3]");
-//  Serial.println(array[3]);
-//  Serial.println("array[4]");
-//  Serial.println(array[4]);
-//  Serial.println("array[5]");
-//  Serial.println(array[5]);
-
-
 
 
  
@@ -140,9 +120,9 @@ void loop() {
   {
   if(array[0] == "Task0")
   {
-      digitalWrite(10, HIGH);
+      digitalWrite(11, HIGH);
 
-      digitalWrite(10, LOW);
+      digitalWrite(11, LOW);
       
       for (uint16_t i = 0; i < 399; i += 1) 
       {
@@ -151,9 +131,9 @@ void loop() {
 
       }
 
-      digitalWrite(11, HIGH);
+      digitalWrite(12, HIGH);
 
-      digitalWrite(11, LOW);
+      digitalWrite(12, LOW);
       
     Serial.println("Task [0] complete");
     array[0] = 0;
@@ -161,36 +141,36 @@ void loop() {
 
   if(array[0] == "Task1")
   {
-      digitalWrite(10, HIGH);
+      digitalWrite(11, HIGH);
 
-      digitalWrite(10, LOW);
+      digitalWrite(11, LOW);
       
       for (uint16_t i = 0; i < 399; i += 1) 
       {
         sin(i)
       }
 
-    digitalWrite(11, HIGH);
+    digitalWrite(12, HIGH);
 
-    digitalWrite(11, LOW);
+    digitalWrite(12, LOW);
     Serial.println("Task complete");
     array[0] = 0;
   }
 
   if(array[0] == "Task2")
   {
-      digitalWrite(10, HIGH);
+      digitalWrite(11, HIGH);
 
-      digitalWrite(10, LOW);
+      digitalWrite(11, LOW);
       
       for (uint16_t i = 0; i < 399; i += 1) 
       {
         tan(i)
       }
 
-     digitalWrite(11, HIGH);
+     digitalWrite(12, HIGH);
 
-     digitalWrite(11, LOW);
+     digitalWrite(12, LOW);
       
     Serial.println("Task [2] complete");
     array[0] = 0;
@@ -199,18 +179,18 @@ void loop() {
   if(array[0] == "Task3")
   {
 
-    digitalWrite(10, HIGH);
+    digitalWrite(11, HIGH);
 
-    digitalWrite(10, LOW);
+    digitalWrite(11, LOW);
       
       for (uint16_t i = 0; i < 399; i += 1) 
       {
         log(i)
       }
 
-    digitalWrite(11, HIGH);
+    digitalWrite(12, HIGH);
 
-    digitalWrite(11, LOW);
+    digitalWrite(12, LOW);
       
     Serial.println("Task [3] complete");
     array[0] = 0;
@@ -218,17 +198,17 @@ void loop() {
 
   if(array[0] == "Task4")
   {
-     digitalWrite(10, HIGH);
+     digitalWrite(11, HIGH);
 
-     digitalWrite(10, LOW);
+     digitalWrite(11, LOW);
       for (uint16_t i = 0; i < 200; i += 1) 
       {
         int32_t n = fft1.read(i);
       }
 
-    digitalWrite(11, HIGH);
+    digitalWrite(12, HIGH);
 
-    digitalWrite(11, LOW);
+    digitalWrite(12, LOW);
       
     Serial.println("Task [4] complete");
     array[0] = 0;
@@ -237,18 +217,18 @@ void loop() {
   if(array[0] == "Task5")
   {
 
-    digitalWrite(10, HIGH);
+    digitalWrite(11, HIGH);
 
-    digitalWrite(10, LOW);
+    digitalWrite(11, LOW);
       
       for (uint16_t i = 0; i < 50; i += 1) 
       {
         fib(i)
       }
 
-   digitalWrite(11, HIGH);
+   digitalWrite(12, HIGH);
 
-   digitalWrite(11, LOW);
+   digitalWrite(12, LOW);
       
     Serial.println("Task [5] complete");
     array[0] = 0;
