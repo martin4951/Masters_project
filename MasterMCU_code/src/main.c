@@ -78,6 +78,7 @@ void NVIC_EnableIRQ(IRQn_Type IRQn)
   NVIC->ISER[((uint32_t)(IRQn) >> 5)] = (1 << ((uint32_t)(IRQn) & 0x1F));
 }
 
+//Timer interrupt for calling task execution
 void TIM_init(void)
 {
 	cclock = RCC;
@@ -286,13 +287,13 @@ void SPI3_Inits(void)
 
 
 
-
+//For testing
 void GPIO_ButtonInit(void)
 {
 
 	GPIO_Handle_t GPIOBtn;
 
-	//this is btn gpio configuration
+	
 	GPIOBtn.pGPIOx = GPIOA;
 	GPIOBtn.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_0;
 	GPIOBtn.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_IT_FT;
@@ -304,7 +305,7 @@ void GPIO_ButtonInit(void)
 	GPIO_Init(&GPIOBtn);
 }
 
-
+//Pins from slave processor for feedback
 void GPIO_Pin1Init(void)
 {
 
@@ -408,7 +409,7 @@ void GPIO_Pin6Init(void)
 }
 
 
-
+//For testing
 void GPIO_LED(void)
 {
 GPIO_Handle_t GpioLed;
@@ -427,6 +428,7 @@ GPIO_Handle_t GpioLed;
 
 }
 
+//Configure ADC to receive current consumption value
 void Configure_ADC1(void)
 {
 GPIO_Handle_t GpioADC1;
@@ -615,7 +617,7 @@ int main(void)
 
 
 
-
+	//Enable feedback interrupts
 	GPIO_IRQInterruptConfig(IRQ_NO_EXTI0,ENABLE);
 	GPIO_IRQInterruptConfig(IRQ_NO_EXTI1,ENABLE);
 	GPIO_IRQInterruptConfig(IRQ_NO_EXTI4,ENABLE);
