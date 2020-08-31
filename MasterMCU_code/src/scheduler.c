@@ -58,7 +58,7 @@ void scheduler_delete(int index)
    int i;
    for(i = index; i < tCount - 1; i++)
    {
-       tList[i] = tList[i + 1];
+       tList[i] = tList[i++];
    }
 
    tCount--;
