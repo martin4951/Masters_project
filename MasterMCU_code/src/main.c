@@ -688,8 +688,9 @@ void EXTI0_IRQHandler(void)
 void EXTI1_IRQHandler(void)
 
 {
-	firstEdgeP1 = ARM_DWT_CYCCNT;
-	ConvertedValueP1 = Get_ADC_Converted_ValueP1();
+	GPIO_IRQHandling(GPIO_PIN_NO_1); //Clear interrupt from EXTI line
+	firstEdgeP1 = ARM_DWT_CYCCNT;  //Start execution cycle timer
+	ConvertedValueP1 = Get_ADC_Converted_ValueP1(); //Sample ADC current value for processor
 
 
 }
@@ -698,7 +699,7 @@ void EXTI1_IRQHandler(void)
 void EXTI4_IRQHandler(void)
 
 {
-
+	GPIO_IRQHandling(GPIO_PIN_NO_4); 
 	secondEdgeP1 = ARM_DWT_CYCCNT;
 	periodT1 = secondEdgeP1 - firstEdgeP1;
 
@@ -708,7 +709,7 @@ void EXTI4_IRQHandler(void)
 void EXTI3_IRQHandler(void)
 
 {
-
+	GPIO_IRQHandling(GPIO_PIN_NO_3); 
 	firstEdgeP2 = ARM_DWT_CYCCNT;
 	ConvertedValueP2 = Get_ADC_Converted_ValueP2();
 
@@ -718,9 +719,9 @@ void EXTI3_IRQHandler(void)
 void EXTI2_IRQHandler(void)
 
 {
-
+	GPIO_IRQHandling(GPIO_PIN_NO_2); 
 	secondEdgeP2 = ARM_DWT_CYCCNT;
-	periodT1 = secondEdgeP2 - firstEdgeP2;
+	periodT2 = secondEdgeP2 - firstEdgeP2;
 
 }
 
@@ -728,7 +729,7 @@ void EXTI2_IRQHandler(void)
 void EXTI9_5_IRQHandler(void)
 
 {
-
+	GPIO_IRQHandling(GPIO_PIN_NO_5); 
 	firstEdgeP3 = ARM_DWT_CYCCNT;
 	ConvertedValueP3 = Get_ADC_Converted_ValueP3();
 
@@ -738,8 +739,8 @@ void EXTI9_5_IRQHandler(void)
 void EXTI15_10_IRQHandler(void)
 
 {
-
+	GPIO_IRQHandling(GPIO_PIN_NO_14); 
 	secondEdgeP3 = ARM_DWT_CYCCNT;
-	periodT1 = secondEdgeP3 - firstEdgeP3;
+	periodT3 = secondEdgeP3 - firstEdgeP3;
 
 }
